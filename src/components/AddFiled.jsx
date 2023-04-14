@@ -16,13 +16,13 @@ const AddField = ({ onFormSubmit }) => {
     return (
             <form className="flex items-center justify-center relative">
                 <div className="mb-6 mr-12">
-                    <label htmlFor="name" className="block mb-2  text-gray-700">Название</label>
+                    <label htmlFor="city" className="block mb-2  text-gray-700">Название</label>
                     <input 
                         type="text" id="city" name="city" className="w-full border border-black p-2" 
                         ref={ city }/>
                 </div>
                 <div className="mb-6 mr-12">
-                    <label htmlFor="email" className="block mb-2 text-gray-700">Временная зона</label>
+                    <label htmlFor="zone" className="block mb-2 text-gray-700">Временная зона</label>
                     <input 
                         type="text" id="zone" name="zone" className="w-full border border-black p-2" 
                         ref={ zone }/>
