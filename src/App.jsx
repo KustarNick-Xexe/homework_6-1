@@ -10,12 +10,14 @@ const App = () => {
 
   const handleFormSubmit = (city, zone) => {
     //moment.tz.setDefault('Etc/Greenwich');
-    const dateTimezoneOffset = moment().utcOffset('+0000').add(Number(zone), 'hours');
+    const dateTimezoneOffset = moment()
+      .subtract(moment().parseZone().utcOffset(), "minutes")
+      .add(Number(zone), "hours");
     setData({ city: city, time: dateTimezoneOffset });
   };
 
   return (
-    <div>
+    <div className=''>
       <AddField onFormSubmit={ handleFormSubmit }/>
       { data.time && <Clock city={ data.city } zone={ data.time } /> }
     </div>

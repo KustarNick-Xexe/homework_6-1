@@ -5,20 +5,20 @@ const Clock = ({ city, zone }) => {
   const [time, setTime] = useState(zone);
 
   useEffect(() => {
-    console.log(zone);
     const timerID = setInterval(() => tick(), 1000);
     return () => clearInterval(timerID);
   });
 
   const tick = () => {
-    const newTime = moment(time);
-    newTime.add(newTime.seconds + 1, 'seconds');
-    setTime(newTime);
+    const newTime = moment(time)
+    newTime.add(1, 'seconds');
+    console.log(newTime);
+    setTime(() => newTime);
   };
 
-  const hours = time.hours;
-  const minutes = time.minutes;
-  const seconds = time.seconds; 
+  const hours = time.hours();
+  const minutes = time.minutes();
+  const seconds = time.seconds(); 
 
   const hourAngle = ((hours % 12) + minutes / 60 + seconds / 3600) * 30;
   const minuteAngle = (minutes + seconds / 60) * 6;
@@ -38,11 +38,11 @@ const Clock = ({ city, zone }) => {
             style={{ transform: `rotate(${hourAngle}deg)` }}
           />
           <div
-            className="absolute w-1 h-24 bg-black transform origin-bottom -translate-x-1/2 bottom-1/2 left-1/2"
+            className="absolute w-1 h-24 bg-slate-700 transform origin-bottom -translate-x-1/2 bottom-1/2 left-1/2"
             style={{ transform: `rotate(${minuteAngle}deg)` }}
           />
           <div
-            className="absolute w-1 h-28 bg-black transform origin-bottom -translate-x-1/2 bottom-1/2 left-1/2"
+            className="absolute w-1 h-28 bg-slate-500 transform origin-bottom -translate-x-1/2 bottom-1/2 left-1/2"
             style={{ transform: `rotate(${secondAngle}deg)` }}
           />
       </div>
