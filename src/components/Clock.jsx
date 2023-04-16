@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import moment from 'moment/moment';
 
-const Clock = ({ city, zone }) => {
+const Clock = ({ id, city, zone, onDelete }) => {
   const [time, setTime] = useState(zone);
 
   useEffect(() => {
@@ -12,7 +12,6 @@ const Clock = ({ city, zone }) => {
   const tick = () => {
     const newTime = moment(time)
     newTime.add(1, 'seconds');
-    console.log(newTime);
     setTime(() => newTime);
   };
 
@@ -24,10 +23,14 @@ const Clock = ({ city, zone }) => {
   const minuteAngle = (minutes + seconds / 60) * 6;
   const secondAngle = seconds * 6;
 
+  const handleClick = () => { console.log(`Удалил ${ id }`); onDelete(id); }
+
   return (
     <div className="inline-block relative w-auto">
       <p className="absolute inline-block transform -translate-x-1/2 left-1/2">{ city }</p>
-      <button className="absolute inline-block transform -translate-x-1/2 -right-8 top-8">
+      <button 
+        className="absolute inline-block transform -translate-x-1/2 -right-8 top-8"
+        onClick={ handleClick }>
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-12 h-12">
           <path strokeLinecap="round" strokeLinejoin="round" d="M9.75 9.75l4.5 4.5m0-4.5l-4.5 4.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
         </svg>

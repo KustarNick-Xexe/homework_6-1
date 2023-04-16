@@ -24,7 +24,7 @@ const AddField = ({ onFormSubmit }) => {
                 <div className="mb-6 mr-12">
                     <label htmlFor="zone" className="block mb-2 text-gray-700">Временная зона</label>
                     <input 
-                        type="text" id="zone" name="zone" className="w-full border border-black p-2" 
+                        type="number" id="zone" name="zone" className="w-full border border-black p-2" 
                         ref={ zone }/>
                 </div>
                 <div>
