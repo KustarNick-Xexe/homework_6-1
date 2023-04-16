@@ -23,7 +23,7 @@ const App = () => {
   };
 
   return (
-    <div className=''>
+    <div className='w-600 my-0 mx-auto'>
       { console.log('отрисовалось')}
       <AddField onFormSubmit={ handleFormSubmit }/>
       {clocks.map(clock => (
