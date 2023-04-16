@@ -9,6 +9,7 @@ const App = () => {
   const [data, setData] = useState({ city: '', time: null });
 
   const handleFormSubmit = (city, zone) => {
+    //moment.tz.setDefault('Etc/Greenwich');
     const dateTimezoneOffset = moment().utcOffset('+0000').add(Number(zone), 'hours');
     setData({ city: city, time: dateTimezoneOffset });
   };
