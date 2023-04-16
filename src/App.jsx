@@ -3,21 +3,20 @@ import ReactDOM from 'react-dom';
 import '../main.css';
 import Clock from "./components/Clock";
 import AddField from './components/AddFiled';
+import moment from 'moment/moment';
 
 const App = () => {
   const [data, setData] = useState({ city: '', time: null });
 
   const handleFormSubmit = (city, zone) => {
-    const now = new Date();
-    const timezoneOffsetInMinutes = -Number(zone) * 60;
-    const dateTimezoneOffset = new Date(now.setUTCHours(now.getUTCHours() + timezoneOffsetInMinutes / 60));
+    const dateTimezoneOffset = moment().utcOffset('+0000').add(Number(zone), 'hours');
     setData({ city: city, time: dateTimezoneOffset });
-    alert(data.city + ' ' + data.time);
-  }
+  };
 
   return (
     <div>
       <AddField onFormSubmit={ handleFormSubmit }/>
+      { data.time && <Clock city={ data.city } zone={ data.time } /> }
     </div>
   );
 };

@@ -14,7 +14,7 @@ const AddField = ({ onFormSubmit }) => {
     };
 
     return (
-            <form className="flex items-center justify-center relative">
+            <form className="flex items-center justify-center relative" onSubmit={ handleInputChange }>
                 <div className="mb-6 mr-12">
                     <label htmlFor="city" className="block mb-2  text-gray-700">Название</label>
                     <input 
@@ -30,7 +30,7 @@ const AddField = ({ onFormSubmit }) => {
                 <div>
                     <button 
                         className=" bg-white text-black  border border-black py-2 px-8 absolute bottom-6"
-                        onClick={ handleInputChange }>Добавить</button>
+                       type='submit'>Добавить</button>
                 </div>
             </form>
     );
